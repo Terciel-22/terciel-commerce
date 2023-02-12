@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
+import { Link, Navigate, Outlet } from 'react-router-dom'
 import { useStateContext } from '../context/ContextProvider'
 
 export default function GuestLayout() {
@@ -8,11 +8,27 @@ export default function GuestLayout() {
 
   if(token)
   {
-    return <Navigate to="/customer" />
+    if(user.type === "Admin")
+    {
+      return <Navigate to="/admin" />
+    }
+    if(user.type === "Seller")
+    {
+      return <Navigate to="/seller" />
+    }
+    if(user.type === "Customer")
+    {
+      return <Navigate to="/customer" />
+    }
   }
 
   return (
     <div>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
+      </nav>
       <Outlet />
     </div>
   )
