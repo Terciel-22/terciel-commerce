@@ -4,7 +4,6 @@ import AdminLayout from "./components/AdminLayout";
 import CustomerLayout from "./components/CustomerLayout";
 import GuestLayout from "./components/GuestLayout";
 import SellerLayout from "./components/SellerLayout";
-import AdminLogin from "./views/guest/AdminLogin";
 import NotFound from "./views/NotFound";
 import Register from "./views/guest/Register";
 import Login from "./views/guest/Login";
@@ -22,10 +21,6 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Navigate to="/dashboard" />
-            },
-            {
-                path: "/master",
-                element: <AdminLogin />
             },
             {
                 path: "/login",

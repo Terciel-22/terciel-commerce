@@ -8,7 +8,7 @@ export default function AdminLayout() {
   const {user,token, setUser, setToken} = useStateContext();
   if(!token)
   {
-    return <Navigate to="/login" />
+    return <Navigate to="/" />
   }
   
   useEffect(()=>{
@@ -41,13 +41,15 @@ export default function AdminLayout() {
   } else 
   {
     return (
-      <div>
-        <nav>
-          {user.name}
-          <a href="" onClick={logout}>Logout</a>
-        </nav>
-        <Outlet />
-      </div>
+      <>
+        <div>
+          <nav>
+            {user.name}
+            <a href="" onClick={logout}>Logout</a>
+          </nav>
+          <Outlet />
+        </div>
+      </>
     )
   }
 }

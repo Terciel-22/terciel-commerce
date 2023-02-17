@@ -9,7 +9,7 @@ export default function CustomerLayout() {
   
   if(!token)
   {
-    return <Navigate to="/login" />
+    return <Navigate to="/" />
   }
   
   useEffect(()=>{

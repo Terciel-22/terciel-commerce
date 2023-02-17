@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react'
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axiosClient from '../../axios-client';
 import { useStateContext } from '../../context/ContextProvider';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 export default function Login() {
 
@@ -9,7 +11,7 @@ export default function Login() {
   const passwordRef = useRef();
 
   const [errors,setErrors] = useState(null);
-  const {setUser,setToken} = useStateContext();
+  const {setToken} = useStateContext();
 
   const login = (ev) => {
     ev.preventDefault();
@@ -21,7 +23,6 @@ export default function Login() {
     }
     axiosClient.post("/login",payload)
       .then(({data}) => {
-        setUser(data.user);
         setToken(data.token);
       })
       .catch(({response})=>{
@@ -42,18 +43,42 @@ export default function Login() {
       })
   }
 
+  const resetField = () => {
+    setErrors(null);
+  }
+
   return (
-    <div>
-      <form action="" onSubmit={login}>
-        <h1>Login Account</h1>
-        {errors && errors.email && <p>{errors.email[0]}</p>}
-        <input ref={emailRef} type="email" placeholder="Email" /><br />
-        {errors && errors.password && <p>{errors.password[0]}</p>}
-        <input ref={passwordRef} type="password" placeholder="Password"/><br />
-        <input type="submit" value="Login" />
-        <input type="reset" value="Reset"/>
-        <p>Not registered? <Link to="/register">Create an account.</Link></p>
-      </form>
-    </div>
+    <section id="login-page">
+      <div className="container pt-5">
+        <div className="row">
+          <div className="col-12 col-sm-8 col-md-6 m-auto">
+            <div className="card border-0 shadow">
+              <div className="card-body text-center">
+                <FontAwesomeIcon className="user-icon" icon={faCircleUser} />
+                <h2 className="mb-4">Sign in Account</h2>
+
+                <form action="" onSubmit={login}>
+                  <div className="form-group my-2">
+                    <input ref={emailRef} className="form-control py-2" type="email" placeholder="Email" />
+                    {errors && errors.email && <p className="text-danger fs-6">{errors.email[0]}</p>}
+                  </div>
+
+                  <div className="form-group my-2">
+                    <input ref={passwordRef} className="form-control py-2 mb-2" type="password" placeholder="Password"/>
+                    {errors && errors.password && <p className="text-danger fs-6">{errors.password[0]}</p>}
+                  </div>
+
+                  <div className="mt-4">
+                    <input className="btn btn-primary mx-2" type="submit" value="Sign in" />
+                    <input className="btn btn-primary mx-2" type="reset" value="Reset" onClick={resetField}/>
+                    <p className="mt-4">Not Registered? <Link className="text-decoration-none" to="/register">Create an account.</Link></p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }

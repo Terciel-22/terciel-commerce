@@ -8,7 +8,7 @@ export default function SellerLayout() {
   const {user,token, setUser, setToken} = useStateContext();
   if(!token)
   {
-    return <Navigate to="/login" />
+    return <Navigate to="/" />
   }
 
   useEffect(()=>{

@@ -1,0 +1,525 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+}
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+h5 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #1d1d1d;
+}
+h6 {
+    color: #d8d8d8;
+}
+button {
+    font-size: 0.8rem;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    background-color: #1d1d1d;
+    color: aliceblue;
+    padding: 13px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+button:hover {
+    background-color: #3a3833;
+}
+hr {
+    width: 30px;
+    height: 2px;
+    background-color: #fb774b;
+}
+
+/* NAVIGATION BAR */
+.navbar {
+    font-size: 16px;
+    top: 0;
+    left: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+.navbar .navbar-nav .nav-link {
+    padding: 0 20px;
+    color: black;
+    transition: 0.3s ease;
+}
+.navbar .navbar-nav .nav-link:hover,
+.navbar .nav-icon:hover,
+.navbar .navbar-nav .nav-link:active,
+.navbar .nav-icon:active,
+.navbar .navbar-nav .nav-link.active,
+#navbarSupportedContent > ul > li:nth-child(6) > a.active,
+#navbarSupportedContent > ul > li:nth-child(7) > a.active,
+#navbarSupportedContent > ul > li:nth-child(8) > a.active {
+    color: coral;
+}
+#navbarSupportedContent > ul > li:nth-child(6) > a,
+#navbarSupportedContent > ul > li:nth-child(7) > a,
+#navbarSupportedContent > ul > li:nth-child(8) > a {
+    color: #25282c;
+}
+.navbar-brand > img {
+    width: 7rem;
+}
+.navbar .nav-icon {
+    font-size: 1.2rem;
+    padding: 0 7px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+#bar {
+    font-size: 1.5rem;
+    padding: 7px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s ease;
+    color: black;
+}
+#bar:hover,
+#bar:active {
+    color: #fff;
+}
+.navbar-light .navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+/* HEADER */
+#home {
+    background-image: url("https://static-blog.omniconvert.com/blog/wp-content/uploads/2020/09/21135804/How-to-do-Growth-of-eCommerce-Website-scaled.jpg");
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: top -20px right -60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+#home span {
+    color: coral;
+}
+
+/* Brands */
+#brand img {
+    max-height: 8rem;
+}
+
+/* New Products */
+#new .one {
+    position: relative;
+}
+#new .one img {
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#new .one .details {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: 0.3s ease;
+}
+#new .one:hover .details {
+    cursor: pointer;
+    background-color: rgba(245, 178, 178, 0.7);
+}
+#new .one .details button {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2a2a2a;
+    background: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid #2a2a2a;
+    padding: 2.5px;
+    transform: translateY(70px);
+    transition: 0.3s ease;
+}
+#new .one .details button:hover {
+    color: #fff;
+    border-bottom: 1px solid white;
+}
+#new .one:nth-child(1) .details {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: start;
+}
+#new .one:nth-child(2) .details {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+#new .one:nth-child(3) .details {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+/* Featured Product */
+.star-container {
+    padding: 10px 0;
+}
+.star-container .star {
+    font-size: 0.8rem;
+}
+.star-container .star.filled{
+    color: goldenrod;
+}
+.product {
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+.product img{
+    transition: 0.3s all;
+    width: auto;
+    height: 15rem;
+}
+.product:hover img{
+    opacity: 0.7;
+}
+.product .buy-btn{
+    background-color: #fb774b;
+    transform: translateY(1.2rem);
+    opacity: 0;
+    transition: 0.3s all;
+}
+
+.product:hover .buy-btn{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* BANNER */
+#banner {
+    background-image: url("https://raw.githubusercontent.com/tech2etc/Build-Ecommerce-Website-With-HTML-CSS-JavaScript/main/img/banner/2.jpg");
+    width: 100%;
+    height: 60vh;
+    background-size: cover;
+    background-position: top 80px right -190px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+#banner h1 {
+    color: #fff;
+}
+#banner h4 {
+    color: #d8d8d8;
+}
+#banner button {
+    background-color: #fb774b;
+}
+
+/* FOOTER */
+#footer {
+    background-color: #222222;
+}
+#footer h4 {
+    color: #d8d8d8;
+    font-weight: 700;
+    font-size: 2rem;
+}
+#footer h5 {
+    color: #d8d8d8;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+#footer li {
+    padding-bottom: 4px;
+}
+#footer li a{
+    font-size: 0.8rem;
+    color: #999;
+    text-decoration: none;
+}
+#footer li a:hover{
+    color: #d8d8d8;
+}
+#footer p{
+    color: #999;
+    font-size: 0.8rem;
+}
+#footer .copyright a{
+    color: #000;
+    width: 2rem;
+    height: 2rem;
+    background-color: #fff;
+    display: inline-block;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 50%;
+    transition: 0.3s ease;
+    margin: 0 5px;
+    padding: 0;
+}
+#footer .copyright a:hover{
+    color: #fff;
+    background-color: #fb774b;
+}
+#footer .footer-one img{
+    width: 3rem;
+    height: 3rem;
+}
+#footer .copyright img{
+    width: 4rem;
+    height: auto;
+    margin: 0.2rem;
+    border-radius: 0.2rem;
+}
+
+
+/* SHOP PAGE */
+#root > section > div.row.mx-auto.container > nav > ul > li.page-item.active > button{
+    background-color: #000;
+    color: #fff;
+}
+#root > section > div.row.mx-auto.container > nav > ul > li:nth-child(n):hover > button {
+    background-color: coral;
+    color: #fff;
+}
+.pagination button{
+    color: #000;
+}
+
+/* Selected Product */
+#selected-product > div > div > img {
+    height: 50vh;
+}
+.small-img-group {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+.small-img-group .small-img-col {
+    flex-basis: 24%;
+    cursor: pointer;
+
+}
+.small-img-group .small-img-col img {
+    height: 15vh;
+}
+#selected-product > div > div:nth-child(2) > button {
+    background-color: #fb774b;
+    opacity: 1;
+    transition: 0.3s all;
+}
+#selected-product > div > div:nth-child(2) > input[type=number] {
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+#selected-product > div > div:nth-child(2) > input[type=number]:focus {
+    outline: none;
+}
+
+/* BLOG PAGE */
+#blog-container .post .post-img{
+    cursor: pointer;
+}
+#blog-container .post:hover img{
+    opacity: 0.8;
+}
+#blog-container .post img{
+    height: 40vh;
+    width: 40vh;
+    transition: 0.3s ease;
+}
+#blog-container .post:hover h3{
+    color: #fb774b;
+}
+#blog-container .post h3{
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* CART PAGE */
+#cart-container {
+    overflow-x: auto;
+    
+}
+#cart-container table{
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+    white-space: nowrap;
+}
+#cart-container table thead {
+    font-weight: 700;
+}
+#cart-container table thead td {
+    background: #fb774b;
+    color: #fff;
+    border: none;
+    padding: 6px 0;
+}
+#cart-container table td{
+    border: 1px solid #b6b3b3;
+    text-align: center;
+    white-space: pre-wrap; 
+}
+#cart-container table td:nth-child(1)
+{
+    width: 100px;
+}
+#cart-container table td:nth-child(2),
+#cart-container table td:nth-child(3)
+{
+    width: 200px;
+    padding: 0.5rem;
+}
+#cart-container table td:nth-child(4),
+#cart-container table td:nth-child(5),
+#cart-container table td:nth-child(6)
+{
+    width: 170px;
+}
+#cart-container table tbody img
+{
+    width: 180px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+#cart-container table tbody .icon 
+{
+    color: #8d8c89;
+}
+#cart-bottom .coupon > div,
+#cart-bottom .total > div 
+{
+    border: 1px solid #b6b3b3;
+}
+#cart-bottom .coupon h5,
+#cart-bottom .total h5 
+{
+    background: #fb774b;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    font-weight: 700;
+}
+#cart-bottom .coupon p,
+#cart-bottom .coupon input
+{
+    padding: 0 12px;
+}
+#cart-bottom .coupon input
+{
+    height: 45px;
+}
+#cart-bottom .coupon input,
+#cart-bottom .coupon button
+{
+    margin: 0 0 20px 12px;
+}
+#cart-bottom .total > div > div{
+    padding: 0 12px;
+}
+#cart-bottom .total h6 {
+    color: #2a2a2a;
+}
+#cart-bottom .total > div > .second-hr {
+    background: #b8b8b8;
+    width: 100%;
+    height: 1px;
+}
+#cart-bottom .total > div > button {
+    margin: 0 12px 20px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Login and Register Page */
+#register-page,
+#login-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+#register-page .card,
+#login-page .card {
+    width: 20rem;
+    margin: 3.125rem auto;
+}
+#register-page .user-icon,
+#login-page .user-icon {
+    width: 3.125rem;
+    height: 3.125rem;
+    display: block;
+    margin: 2rem auto;
+}
+
+/* ADMIN LAYOUT */
+#side-nav {
+    background: #000;
+}
+#admin .content {
+    min-height: 100vh;
+    width: 100%;
+    
+}
+
+
+
+/* MOBILE */
+@media only screen and (max-width: 991px)
+{
+    /* NAVIGATION  */
+    #root > nav > div > button:hover,
+    #root > nav > div > button:focus {
+        background-color: #fb774b;
+    }
+    #root > nav > div > button:hover #bar,
+    #root > nav > div > button:focus #bar {
+        color: #fff;
+    }
+    #navbarSupportedContent > ul {
+        margin: 1rem;
+        justify-content: flex-end;
+        align-items: flex-end;
+        text-align: right;
+    }
+    #navbarSupportedContent > ul > li:nth-child(n) > a {
+        padding: 10px;
+    }
+}
