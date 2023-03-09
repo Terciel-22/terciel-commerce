@@ -71,7 +71,7 @@ export default function Register() {
 
                   <div className="mt-4">
                     <input className="btn btn-primary mx-2" type="submit" value="Sign up" />
-                    <input className="btn btn-primary mx-2" type="reset" value="Reset" onClick={resetField}/>
+                    <input className="btn btn-danger mx-2" type="reset" value="Reset" onClick={resetField}/>
                     <p className="mt-4">Already have an account? <Link className="text-decoration-none" to="/login">Sign in.</Link></p>
                   </div>
                 </form>

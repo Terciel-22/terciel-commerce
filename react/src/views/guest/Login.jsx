@@ -70,7 +70,7 @@ export default function Login() {
 
                   <div className="mt-4">
                     <input className="btn btn-primary mx-2" type="submit" value="Sign in" />
-                    <input className="btn btn-primary mx-2" type="reset" value="Reset" onClick={resetField}/>
+                    <input className="btn btn-danger mx-2" type="reset" value="Reset" onClick={resetField}/>
                     <p className="mt-4">Not Registered? <Link className="text-decoration-none" to="/register">Create an account.</Link></p>
                   </div>
                 </form>

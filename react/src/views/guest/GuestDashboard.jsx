@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import ProductList from '../../components/inc/ProductList';
 
 export default function GuestDashboard() {
 
@@ -19,6 +20,7 @@ export default function GuestDashboard() {
           <button onClick={shopNowBtn}>Shop Now</button>
         </div>
       </section>
+
       <section id="brand" className="container">
         <div className="row m-0 py-5">
           <img className="img-fluid col-lg-2 col-md-4 col-6" src="https://raw.githubusercontent.com/tech2etc/Build-Ecommerce-Website-With-HTML-CSS-JavaScript/main/img/brand/1.png" alt="Right Check"/>
@@ -29,6 +31,7 @@ export default function GuestDashboard() {
           <img className="img-fluid col-lg-2 col-md-4 col-6" src="https://raw.githubusercontent.com/tech2etc/Build-Ecommerce-Website-With-HTML-CSS-JavaScript/main/img/brand/6.png" alt="Skill Star"/>
         </div>
       </section>
+
       <section id="new" className="w-100">
         <div className="row p-0 m-0">
             <div className="one col-lg-4 col-md-12 col-12 p-0">
@@ -52,6 +55,25 @@ export default function GuestDashboard() {
                     <button className="text-upper-case" onClick={shopNowBtn}>Shop Now</button>
                 </div>
             </div>
+        </div>
+      </section>
+
+      <section id="featured" className="my-5 pb-5">
+        <div className="container text-center mt-5 py-5 ">
+          <h3>Our Featured</h3>
+          <hr className="mx-auto"/>
+          <p>Here you can check out our new products with fair price on terciel.</p>
+        </div>
+        <div className="row mx-auto container">
+          <ProductList />
+        </div>
+      </section>
+
+      <section id="banner">
+        <div className="container my-5 py-5">
+            <h4>NEW YEAR'S SALE</h4>
+            <h1>2023 Collection<br/>UP TO 20% OFF</h1>
+            <button className="text-uppercase">Shop Now</button>
         </div>
       </section>
     </>
