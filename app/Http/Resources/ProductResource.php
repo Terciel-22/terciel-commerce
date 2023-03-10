@@ -26,7 +26,7 @@ class ProductResource extends JsonResource
             'rating' => $this->rating,
             'stock' => $this->stock,
             'brand' => $this->brand,
-            'category' => $this->category,
+            'category_id' => $this->category_id,
             'image' => $this->image,
             'created_at' => $this->created_at !== null ? $this->created_at->format('Y-m-d') : null,
         ];

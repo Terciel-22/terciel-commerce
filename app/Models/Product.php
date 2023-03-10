@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Database\Factories\ProductFactory;
 
 class Product extends Model
 {
@@ -17,7 +18,12 @@ class Product extends Model
         'rating',
         'stock',
         'brand',
-        'category',
+        'category_id',
         'image'
     ];
+
+    protected static function newFactory()
+    {
+        return ProductFactory::new();
+    }
 }

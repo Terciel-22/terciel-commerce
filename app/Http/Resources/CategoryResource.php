@@ -5,11 +5,8 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\ProductResource;
 
-class FeaturedProductResource extends JsonResource
+class CategoryResource extends JsonResource
 {
-
-    public static $wrap = false;
-    
     /**
      * Transform the resource into an array.
      *
@@ -18,6 +15,10 @@ class FeaturedProductResource extends JsonResource
      */
     public function toArray($request)
     {
-        return new ProductResource($this->product);
+        return [ 
+            'title' => $this->title,
+            'description' => $this->description,
+            'products' => ProductResource::collection($this->products),
+        ];
     }
 }

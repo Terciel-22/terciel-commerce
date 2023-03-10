@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import Categories from '../../components/inc/Categories';
 import FeaturedProducts from '../../components/inc/FeaturedProducts';
 
 export default function GuestDashboard() {
@@ -77,7 +78,7 @@ export default function GuestDashboard() {
         </div>
       </section>
 
-      
+      <Categories />
     </>
   )
 }
