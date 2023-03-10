@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\FeaturedProductController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,6 +26,6 @@ Route::middleware("auth:sanctum")->group(function(){
     Route::post("/logout",[AuthController::class, "logout"]);
 });
 
-Route::get("/show-products", [ProductController::class,"index"]);
+Route::get("/featured-products", [FeaturedProductController::class,"index"]);
 Route::post("/register",[AuthController::class, "register"]);
 Route::post("/login",[AuthController::class, "login"]);

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import ProductList from '../../components/inc/ProductList';
+import FeaturedProducts from '../../components/inc/FeaturedProducts';
 
 export default function GuestDashboard() {
 
@@ -65,7 +65,7 @@ export default function GuestDashboard() {
           <p>Here you can check out our new products with fair price on terciel.</p>
         </div>
         <div className="row mx-auto container">
-          <ProductList />
+          <FeaturedProducts />
         </div>
       </section>
 
@@ -76,6 +76,8 @@ export default function GuestDashboard() {
             <button className="text-uppercase">Shop Now</button>
         </div>
       </section>
+
+      
     </>
   )
 }
