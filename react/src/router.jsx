@@ -12,6 +12,7 @@ import CustomerDashboard from "./views/customer/CustomerDashboard";
 import SellerDashboard from "./views/seller/SellerDashboard";
 import AdminDashboard from "./views/admin/AdminDashboard";
 import Shop from "./views/guest/Shop";
+import SelectedProduct from "./components/inc/SelectedProduct";
 
 
 const router = createBrowserRouter([
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Navigate to="/dashboard" />
+                element: <Navigate to="/home" />
             },
             {
                 path: "/login",
@@ -32,13 +33,17 @@ const router = createBrowserRouter([
                 element: <Register />
             },
             {
-                path: "/dashboard",
+                path: "/home",
                 element: <GuestDashboard />
             },
             {
                 path: "/shop",
                 element: <Shop />
-            }
+            },
+            {
+                path: "/product/:id",
+                element: <SelectedProduct />
+            },
         ]
     },
     {

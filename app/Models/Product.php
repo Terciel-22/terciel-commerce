@@ -22,6 +22,16 @@ class Product extends Model
         'image'
     ];
 
+    public function productImages()
+    {
+        return $this->hasMany(ProductImages::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     protected static function newFactory()
     {
         return ProductFactory::new();

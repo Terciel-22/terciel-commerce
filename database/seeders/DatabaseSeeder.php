@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $max = 20;
         for($c=1; $c<=$max; $c++) {
             \App\Models\Product::factory()->create();
+            //\App\Models\ProductImages::factory()->create();
         }
     }
 }

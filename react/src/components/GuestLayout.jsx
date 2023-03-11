@@ -33,7 +33,7 @@ export default function GuestLayout() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/dashboard" onClick={scrollToTop}>Home</NavLink>
+                  <NavLink className="nav-link" to="/home" onClick={scrollToTop}>Home</NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/shop" onClick={scrollToTop}>Shop</NavLink>

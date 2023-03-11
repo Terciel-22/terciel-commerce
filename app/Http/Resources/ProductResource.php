@@ -17,6 +17,9 @@ class ProductResource extends JsonResource
      */
     public function toArray($request)
     {
+
+        $category = new CategoryResource($this->category);
+
         return [
             'id' => $this->id,
             'title' => $this->title,
@@ -27,7 +30,10 @@ class ProductResource extends JsonResource
             'stock' => $this->stock,
             'brand' => $this->brand,
             'category_id' => $this->category_id,
+            'category_title' => $category->title,
+            'category_products' => $category->products,
             'image' => $this->image,
+            'other_images' => ProductImagesResource::collection($this->productImages),
             'created_at' => $this->created_at !== null ? $this->created_at->format('Y-m-d') : null,
         ];
     }

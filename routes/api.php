@@ -28,6 +28,7 @@ Route::middleware("auth:sanctum")->group(function(){
 });
 
 Route::get("/products",  [ProductController::class,"index"]);
+Route::get("/product/{id}", [ProductController::class,"displayProduct"]);
 Route::get("/featured-products", [FeaturedProductController::class,"index"]);
 Route::get("/categories", [CategoryController::class,"index"]);
 Route::post("/register",[AuthController::class, "register"]);

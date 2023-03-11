@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         return CategoryResource::collection(
-            Category::query()->orderBy('id','desc')->paginate(3)
+            Category::all()
         );
     }
 

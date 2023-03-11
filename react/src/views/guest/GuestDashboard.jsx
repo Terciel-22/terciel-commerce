@@ -8,7 +8,7 @@ export default function GuestDashboard() {
   
   const navigate = useNavigate();
   const shopNowBtn = () => {
-    navigate("/login");
+    navigate("/shop");
   }
 
   return (
