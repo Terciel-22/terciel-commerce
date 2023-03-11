@@ -22,7 +22,7 @@ export default function Categories() {
                         <hr className="mx-auto"/>
                         <p>{category.description}</p>
                     </div>
-                    <div className="row mx-auto container">
+                    <div className="row mx-auto container-fluid">
                         <ProductList products={category.products} />
                     </div>
                 </section>

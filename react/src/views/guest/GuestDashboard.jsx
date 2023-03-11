@@ -65,7 +65,7 @@ export default function GuestDashboard() {
           <hr className="mx-auto"/>
           <p>Here you can check out our new products with fair price on terciel.</p>
         </div>
-        <div className="row mx-auto container">
+        <div className="row mx-auto container-fluid">
           <FeaturedProducts />
         </div>
       </section>

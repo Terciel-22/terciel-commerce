@@ -1,8 +1,8 @@
-import { Link, Navigate, Outlet } from 'react-router-dom';
+import { NavLink, Navigate, Outlet } from 'react-router-dom';
 import { useStateContext } from '../context/ContextProvider';
 import logo from "/personal-logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function GuestLayout() {
@@ -14,25 +14,35 @@ export default function GuestLayout() {
     return <Navigate to="/customer" />;
   }
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
     <>
       {/*  NAVIGATION  */}
       <header>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary py-2 fixed-top">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light py-2 fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to="/">
+            <NavLink className="navbar-brand" to="/">
               <img src={logo} alt="Logo" />
-            </Link>
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/register">
-                  <span>
-                    <FontAwesomeIcon className="nav-icon" icon={faUserCircle} />
-                  </span>
-                  <span>Join Us</span>
-                </Link>
-              </li>
-            </ul>
+            </NavLink>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span><FontAwesomeIcon icon={faBars} id="bar"/></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav ms-auto">
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/dashboard" onClick={scrollToTop}>Home</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/shop" onClick={scrollToTop}>Shop</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/register" onClick={scrollToTop}>Join Us</NavLink>
+                </li>
+              </ul>
+            </div>
           </div>
         </nav>
       </header>

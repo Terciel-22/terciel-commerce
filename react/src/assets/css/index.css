@@ -59,20 +59,14 @@ hr {
     top: 0;
     left: 0;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    background: white;
 }
 .navbar .navbar-nav .nav-link {
     padding: 0 20px;
     color: black;
     transition: 0.3s ease;
-    font-weight: 500;
-    font-size: 1.2rem;
-    cursor: pointer;
 }
 .navbar .navbar-nav .nav-link:hover,
-.navbar .nav-icon:hover,
 .navbar .navbar-nav .nav-link:active,
-.navbar .nav-icon:active,
 .navbar .navbar-nav .nav-link.active {
     color: coral;
 }
@@ -81,6 +75,22 @@ hr {
 }
 .navbar .nav-icon {
     padding: 0 7px;
+}
+#bar {
+    font-size: 1.5rem;
+    padding: 7px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s ease;
+    color: black;
+}
+#bar:hover,
+#bar:active {
+    color: #fff;
+}
+.navbar .navbar-toggler{
+    border: none;
+    outline: none;
 }
 
 /* HEADER */
@@ -281,6 +291,28 @@ hr {
     border-radius: 0.2rem;
 }
 
+/* SHOP */
+#shop .product img {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    object-fit: cover;
+}
+#shop > div.row.mx-auto.container > nav > ul > li.page-item.active > a{
+    background-color: #000;
+    color: #fff;
+}
+#shop > div.row.mx-auto.container > nav > ul > li.page-item:nth-child(n):hover > a {
+    background-color: coral;
+    color: #fff;
+}
+.pagination a{
+    color: #000;
+}
+
+
+
+
 /* Login and Register Page */
 #register-page,
 #login-page {
@@ -317,12 +349,12 @@ hr {
 @media only screen and (max-width: 991px)
 {
     /* NAVIGATION  */
-    #root > nav > div > button:hover,
-    #root > nav > div > button:focus {
+    .navbar .navbar-toggler:hover,
+    .navbar .navbar-toggler:focus {
         background-color: #fb774b;
     }
-    #root > nav > div > button:hover #bar,
-    #root > nav > div > button:focus #bar {
+    .navbar .navbar-toggler:hover #bar,
+    .navbar .navbar-toggler:focus #bar {
         color: #fff;
     }
     #navbarSupportedContent > ul {
@@ -332,6 +364,6 @@ hr {
         text-align: right;
     }
     #navbarSupportedContent > ul > li:nth-child(n) > a {
-        padding: 10px;
+        padding: 10px 0;
     }
 }

@@ -11,6 +11,7 @@ import GuestDashboard from "./views/guest/GuestDashboard";
 import CustomerDashboard from "./views/customer/CustomerDashboard";
 import SellerDashboard from "./views/seller/SellerDashboard";
 import AdminDashboard from "./views/admin/AdminDashboard";
+import Shop from "./views/guest/Shop";
 
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard",
                 element: <GuestDashboard />
+            },
+            {
+                path: "/shop",
+                element: <Shop />
             }
         ]
     },

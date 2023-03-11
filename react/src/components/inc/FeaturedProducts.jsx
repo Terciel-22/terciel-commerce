@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import axiosClient from '../../axios-client';
-import Product from './Product';
 import ProductList from './ProductList';
 
 export default function FeaturedProducts() {

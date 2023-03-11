@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         return ProductResource::collection(
-            Product::query()->orderBy('id','desc')->paginate(10)
+            Product::query()->orderBy('id','desc')->paginate(4)
         );
     }
 
