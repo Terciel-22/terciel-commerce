@@ -14,10 +14,6 @@ export default function GuestLayout() {
     return <Navigate to="/customer" />;
   }
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
   return (
     <>
       {/*  NAVIGATION  */}
@@ -33,13 +29,16 @@ export default function GuestLayout() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/home" onClick={scrollToTop}>Home</NavLink>
+                  <NavLink className="nav-link" to="/home">Home</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/shop" onClick={scrollToTop}>Shop</NavLink>
+                  <NavLink className="nav-link" to="/shop">Shop</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/register" onClick={scrollToTop}>Join Us</NavLink>
+                  <NavLink className="nav-link" to="/blog">Blog</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/register">Join Us</NavLink>
                 </li>
               </ul>
             </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Categories from '../../components/inc/Categories';
 import FeaturedProducts from '../../components/inc/FeaturedProducts';
@@ -7,6 +7,10 @@ export default function GuestDashboard() {
 
   
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  },[])
   const shopNowBtn = () => {
     navigate("/shop");
   }

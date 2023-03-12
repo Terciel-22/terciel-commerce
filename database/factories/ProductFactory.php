@@ -21,7 +21,7 @@ class ProductFactory extends Factory
 
         return [
             'title' => $this->faker->word(),
-            'description' => $this->faker->text($nbMaxChars = 50),
+            'description' => $this->faker->text($nbMaxChars = 2000),
             'price' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 50, $max = 300),
             'discount_percentage' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 50),
             'rating' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 5),

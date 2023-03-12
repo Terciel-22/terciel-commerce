@@ -13,6 +13,7 @@ import SellerDashboard from "./views/seller/SellerDashboard";
 import AdminDashboard from "./views/admin/AdminDashboard";
 import Shop from "./views/guest/Shop";
 import SelectedProduct from "./components/inc/SelectedProduct";
+import Blog from "./views/guest/Blog";
 
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
                 path: "/product/:id",
                 element: <SelectedProduct />
             },
+            {
+                path: "/blog",
+                element: <Blog />
+            }
         ]
     },
     {

@@ -73,15 +73,4 @@ class ProductController extends Controller
         $product->delete();
         return response("", 204);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function displayProduct($id)
-    {
-        return new ProductResource(Product::findOrFail($id));
-    }
 }

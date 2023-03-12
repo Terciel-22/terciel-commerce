@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import axiosClient from '../../axios-client';
 import { useStateContext } from '../../context/ContextProvider';
@@ -15,6 +15,10 @@ export default function Register() {
   const [errors,setErrors] = useState(null);
   const {setToken} = useStateContext();
 
+  useEffect(()=>{
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  },[]);
+  
   const register = (ev) => {
     ev.preventDefault();
     setErrors(null);
