@@ -22,7 +22,7 @@ export default function SelectedProduct() {
         useEffect(()=>{
             setLoading(true);
             window.scrollTo({ top: 0, behavior: "smooth" });
-            axiosClient.get(`/product/${id}`)
+            axiosClient.get(`/products/${id}`)
             .then(({data})=>{
                 setProduct(data);
                 setLoading(false);

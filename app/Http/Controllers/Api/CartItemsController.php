@@ -20,7 +20,9 @@ class CartItemsController extends Controller
      */
     public function index()
     {
-        //
+        return CartItemsResource::collection(
+            CartItems::all()
+        );
     }
 
     /**
@@ -84,9 +86,9 @@ class CartItemsController extends Controller
      * @param  \App\Models\CartItems  $cartItems
      * @return \Illuminate\Http\Response
      */
-    public function show(CartItems $cartItems)
+    public function show(CartItems $cartItem)
     {
-        //
+        return new CartItemsResource($cartItem); 
     }
 
     /**
@@ -107,8 +109,17 @@ class CartItemsController extends Controller
      * @param  \App\Models\CartItems  $cartItems
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CartItems $cartItems)
+    public function destroy(CartItems $cartItem)
     {
-        //
+        $cartItem->delete();
+        return response("",204);
+    }
+
+    public function showWithCartToken($cart_token)
+    {
+        //Show all list of cart items with same token
+        return CartItemsResource::collection(
+            CartItems::query()->where('cart_token',$cart_token)->get()
+        );
     }
 }

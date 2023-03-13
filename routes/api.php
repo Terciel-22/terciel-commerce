@@ -25,15 +25,14 @@ Route::middleware("auth:sanctum")->group(function(){
         return $request->user();
     });
     
-    Route::apiResource("/products",ProductController::class);
     Route::post("/logout",[AuthController::class, "logout"]);
 });
-Route::apiResource("/cart-items",CartItemsController::class);
-Route::get("/products",  [ProductController::class,"index"]);
-Route::get("/product/{product}", [ProductController::class,"show"]);
-Route::get("/featured-products", [FeaturedProductController::class,"index"]);
-Route::get("/categories", [CategoryController::class,"index"]);
-Route::get("/blogs",  [BlogController::class,"index"]);
+Route::apiResource("products",ProductController::class);
+Route::apiResource("cart-items",CartItemsController::class);
+Route::get("/cart-items-with-token/{token}",[CartItemsController::class,"showWithCartToken"]);
+Route::apiResource("featured-products", FeaturedProductController::class);
+Route::apiResource("categories", CategoryController::class);
+Route::apiResource("blogs", BlogController::class);
 
 Route::post("/register",[AuthController::class, "register"]);
 Route::post("/login",[AuthController::class, "login"]);

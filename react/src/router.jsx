@@ -14,6 +14,7 @@ import AdminDashboard from "./views/admin/AdminDashboard";
 import Shop from "./views/guest/Shop";
 import SelectedProduct from "./components/inc/SelectedProduct";
 import Blog from "./views/guest/Blog";
+import Cart from "./components/inc/Cart";
 
 
 const router = createBrowserRouter([
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
             {
                 path: "/blog",
                 element: <Blog />
+            },
+            {
+                path: "/cart",
+                element: <Cart />
             }
         ]
     },

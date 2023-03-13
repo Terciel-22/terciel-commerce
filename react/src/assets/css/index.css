@@ -373,7 +373,6 @@ main {
 /* CART PAGE */
 #cart-container {
     overflow-x: auto;
-    
 }
 #cart-container table{
     border-collapse: collapse;
@@ -411,6 +410,10 @@ main {
 {
     width: 170px;
 }
+#cart-container table tbody td button {
+    background: none;
+    border: none;
+}
 #cart-container table tbody img
 {
     width: 180px;
@@ -421,6 +424,11 @@ main {
 #cart-container table tbody .icon 
 {
     color: #8d8c89;
+    font-size: 2rem;
+}
+#cart-container table tbody td button:hover .icon 
+{
+    color: #fb774b;
 }
 #cart-bottom .coupon > div,
 #cart-bottom .total > div 
