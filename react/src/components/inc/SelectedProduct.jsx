@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axiosClient from '../../axios-client';
 import PageLoadingAnimation from './PageLoadingAnimation';
@@ -46,6 +46,24 @@ export default function SelectedProduct() {
         _setMainImage(image);
     }
 
+    const quantityRef = useRef();
+
+
+    const addToCart = (productID, productPrice, productStock) => {
+        const cart_item = {
+            product_id : productID,
+            price : productPrice,
+            quantity : quantityRef.current.value,
+            stock : productStock,
+            cart_token : localStorage.getItem("CART_TOKEN") //send only to a cart that have the same cart token
+        };
+        axiosClient.post(`/cart-items`,cart_item)
+        .then(({data})=>{
+          console.log(data);
+          localStorage.setItem("CART_TOKEN", data.cart_token);
+        });
+    }
+
     return (
         <>
             {loading ? (
@@ -76,8 +94,8 @@ export default function SelectedProduct() {
                                 <h2>${product.price}</h2>
                                 <h6 className="text-secondary">{product.stock} pieces on stock.</h6>
                                 {product.rating && <Rating rating={product.rating} />}
-                                <input type="number" value={quantity} min={0} max={product.stock} onChange={handleChange}/>
-                                <button className="buy-btn">Add to cart</button>
+                                <input ref={quantityRef} type="number" value={quantity} min={0} max={product.stock} onChange={handleChange}/>
+                                <button className="buy-btn" onClick={()=>{addToCart(product.id, product.price, product.stock)}}>Add to cart</button>
                                 <h4 className="mt-5 mb-4">Product Details</h4>
                                 <span>{product.description}</span>
                             </div>

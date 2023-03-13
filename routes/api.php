@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\FeaturedProductController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\CartItemsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,7 +28,7 @@ Route::middleware("auth:sanctum")->group(function(){
     Route::apiResource("/products",ProductController::class);
     Route::post("/logout",[AuthController::class, "logout"]);
 });
-
+Route::apiResource("/cart-items",CartItemsController::class);
 Route::get("/products",  [ProductController::class,"index"]);
 Route::get("/product/{product}", [ProductController::class,"show"]);
 Route::get("/featured-products", [FeaturedProductController::class,"index"]);

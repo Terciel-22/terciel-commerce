@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class FeaturedProduct extends Model
+class Cart extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'product_id'
+        'cart_token',
+        'total_quantity',
+        'total_price',
     ];
 
-    public function product()
+    public function cartItems()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(CartItems::class);
     }
 }
