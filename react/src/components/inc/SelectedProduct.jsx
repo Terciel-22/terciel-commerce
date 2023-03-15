@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import axiosClient from '../../axios-client';
 import PageLoadingAnimation from './PageLoadingAnimation';
 import ProductList from './ProductList';
@@ -9,6 +9,7 @@ import SectionLoadingAnimation from './SectionLoadingAnimation';
 export default function SelectedProduct() {
 
     const [loading, setLoading] = useState(false);
+    const [cartItemsQuantity, setCartItemsQuantity] = useOutletContext();
 
     const {id} = useParams();
     const [product, setProduct] = useState([]);
@@ -55,12 +56,12 @@ export default function SelectedProduct() {
             price : productPrice,
             quantity : quantityRef.current.value,
             stock : productStock,
-            cart_token : localStorage.getItem("CART_TOKEN") //send only to a cart that have the same cart token
+            cart_token : localStorage.getItem("CART_TOKEN") 
         };
         axiosClient.post(`/cart-items`,cart_item)
         .then(({data})=>{
-          console.log(data);
           localStorage.setItem("CART_TOKEN", data.cart_token);
+          setCartItemsQuantity();
         });
     }
 

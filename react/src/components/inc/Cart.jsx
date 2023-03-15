@@ -3,13 +3,16 @@ import PageLoadingAnimation from "./PageLoadingAnimation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import axiosClient from "../../axios-client";
+import { useOutletContext } from "react-router-dom";
 
 export default function Cart() {
 
     const [loading, setLoading] = useState(false);
     const [cartItems, setCartItems] = useState([]);
+    const [cartItemsQuantity, getCartItemsQuantity] = useOutletContext();
+    const [subTotalPrice, _setSubTotalPrice] = useState(0);
+    const EXAMPLE_SHIPPING_FEE = cartItemsQuantity !== 0 ? 200 : 0;
 
-    
     useEffect(()=>{
         window.scrollTo({ top: 0, behavior: "smooth" });
         setLoading(true);
@@ -20,14 +23,26 @@ export default function Cart() {
         axiosClient.delete(`/cart-items/${id}`)
             .then(()=>{
                 getCartItems();
+                getCartItemsQuantity();
             })
+    }
+
+    const setSubTotalPrice = (cartItems) => {
+        let totalPricePerItem = 0, subTotal = 0;
+
+        cartItems.map((cartItem)=>{
+            totalPricePerItem = cartItem.quantity * cartItem.product.price;
+            subTotal += totalPricePerItem 
+        })
+        _setSubTotalPrice(subTotal);
+        setLoading(false);
     }
 
     const getCartItems = () => {
         axiosClient.get(`/cart-items-with-token/${localStorage.getItem("CART_TOKEN")}`)
             .then(({data})=>{
                 setCartItems(data.data);
-                setLoading(false);
+                setSubTotalPrice(data.data);
             })
     }
 
@@ -58,10 +73,10 @@ export default function Cart() {
                         <tr key={index}>
                             <td><button onClick={()=>{deleteCartItem(cartItem.id)}}><FontAwesomeIcon icon={faTrashCan} className="icon"/></button></td>
                             <td><img src={cartItem.product.image} alt={cartItem.product.title} /></td>
-                            <td>{cartItem.product.title}</td>
+                            <td className="text-capitalize">{cartItem.product.title}</td>
                             <td>${cartItem.product.price}</td>
-                            <td><input type="number" onChange={()=>{}} value={cartItem.quantity} min={0} className="w-25 pl-1" /></td>
-                            <td>$ quantity * price</td>
+                            <td><input type="number" onChange={()=>{}} value={cartItem.quantity} max={cartItem.product.stock} min={0} className="w-25 pl-1" /></td>
+                            <td>$ {cartItem.quantity * cartItem.product.price}</td>
                         </tr>
                     )}
                     </tbody>
@@ -82,17 +97,17 @@ export default function Cart() {
                         <div>
                             <h5>CART TOTAL</h5>
                             <div className="d-flex justify-content-between">
-                                <h6>Total Price</h6>
-                                <p>$ totalPrice</p>
+                                <h6>Subtotal Price</h6>
+                                <p>$ {subTotalPrice}</p>
                             </div>
                             <div className="d-flex justify-content-between">
                                 <h6>Shipping Fee</h6>
-                                <p>$ shippingFee</p>
+                                <p>$ {EXAMPLE_SHIPPING_FEE}</p>
                             </div>
                             <hr className="second-hr"/>
                             <div className="d-flex justify-content-between">
                                 <h6>Total</h6>
-                                <p>$ total</p>
+                                <p>$ {subTotalPrice + EXAMPLE_SHIPPING_FEE}</p>
                             </div>
                             
                             <button className="ms-auto">PROCEED TO CHECKOUT</button>

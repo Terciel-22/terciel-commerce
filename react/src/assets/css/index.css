@@ -479,7 +479,11 @@ main {
 /* Login and Register Page */
 #register-page,
 #login-page {
+    background-image: url("https://static-blog.omniconvert.com/blog/wp-content/uploads/2020/09/21135804/How-to-do-Growth-of-eCommerce-Website-scaled.jpg");
+    width: 100%;
     height: 100vh;
+    background-size: cover;
+    background-position: top -20px right -60px;
     display: flex;
     align-items: center;
 }

@@ -83,6 +83,7 @@ export default function GuestDashboard() {
       </section>
 
       <Categories />
+      
     </>
   )
 }

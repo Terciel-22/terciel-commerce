@@ -1,9 +1,10 @@
 import { NavLink, Navigate, Outlet } from 'react-router-dom';
 import { useStateContext } from '../context/ContextProvider';
-import logo from "/personal-logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook, faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faBars, faShoppingBag, faHome, faBlog, faCartShopping, faRightToBracket } from "@fortawesome/free-solid-svg-icons";
+import { faFacebook, faTwitter, faLinkedin, faShopify } from "@fortawesome/free-brands-svg-icons";
+import { useEffect, useState } from 'react';
+import axiosClient from '../axios-client';
 
 export default function GuestLayout() {
 
@@ -14,6 +15,24 @@ export default function GuestLayout() {
     return <Navigate to="/customer" />;
   }
 
+  const [cartItemsQuantity, _setCartItemsQuantity] = useState(null);
+
+  useEffect(()=>{
+    setCartItemsQuantity();
+  },[]);
+
+  const setCartItemsQuantity = () => {
+    if(localStorage.getItem("CART_TOKEN"))
+    {
+      //If not null, then get cart item quantities
+      //set to the state
+      axiosClient.get(`/cart-items-with-token/${localStorage.getItem("CART_TOKEN")}`)
+        .then(({data})=>{
+          _setCartItemsQuantity(data.data.length);
+        });
+    }
+  }
+
   return (
     <>
       {/*  NAVIGATION  */}
@@ -21,7 +40,7 @@ export default function GuestLayout() {
         <nav className="navbar navbar-expand-lg navbar-light bg-light py-2 fixed-top">
           <div className="container">
             <NavLink className="navbar-brand" to="/">
-              <img src={logo} alt="Logo" />
+              <FontAwesomeIcon icon={faShoppingBag} className="me-2"/> Terciel
             </NavLink>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span><FontAwesomeIcon icon={faBars} id="bar"/></span>
@@ -29,16 +48,47 @@ export default function GuestLayout() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/home">Home</NavLink>
+                  <NavLink className="nav-link" to="/home">
+                    <span className="pe-1">
+                        <FontAwesomeIcon icon={faHome} />
+                    </span>
+                    Home
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/shop">Shop</NavLink>
+                  <NavLink className="nav-link" to="/shop">
+                    <span className="pe-1">
+                        <FontAwesomeIcon icon={faShopify} />
+                    </span>
+                    Shop
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/blog">Blog</NavLink>
+                  <NavLink className="nav-link" to="/blog">
+                    <span className="pe-1">
+                        <FontAwesomeIcon icon={faBlog} />
+                    </span>
+                    Blog
+                  </NavLink>
                 </li>
+                {cartItemsQuantity && cartItemsQuantity !== 0 ? (
+                  <li className="nav-item">
+                    <NavLink to="/cart" className="nav-link">
+                        <span className="pe-1">
+                          <FontAwesomeIcon icon={faCartShopping} />
+                        </span>
+                        Cart
+                        <span className="ms-1 badge badge-pill bg-danger p-1">{cartItemsQuantity}</span>
+                    </NavLink>
+                  </li>
+                ):null}
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/register">Join Us</NavLink>
+                  <NavLink className="nav-link" to="/register">
+                    <span className="pe-1">
+                      <FontAwesomeIcon icon={faRightToBracket} />
+                    </span>
+                    Join Us
+                  </NavLink>
                 </li>
               </ul>
             </div>
@@ -46,9 +96,9 @@ export default function GuestLayout() {
         </nav>
       </header>
       <main>
-        <Outlet />
+        <Outlet context={[cartItemsQuantity, setCartItemsQuantity]}/>
       </main>
-      <footer id="footer" className="mt-5 py-5">
+      <footer id="footer" className="py-5">
         <div className="row container mx-auto pt-5">
           <div className="footer-one col-lg-3 col-md-6 col-12">
             <h4>Terciel</h4>
