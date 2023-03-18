@@ -8,7 +8,7 @@ import axiosClient from '../axios-client';
 
 export default function GuestLayout() {
 
-  const {token} = useStateContext();
+  const {token, notification} = useStateContext();
   
   if(token)
   {
@@ -96,6 +96,11 @@ export default function GuestLayout() {
         </nav>
       </header>
       <main>
+        {notification && 
+          <div className="position-absolute alert alert-warning notification">
+            {notification}
+          </div>
+        }
         <Outlet context={[cartItemsQuantity, setCartItemsQuantity]}/>
       </main>
       <footer id="footer" className="py-5">

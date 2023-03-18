@@ -55,6 +55,10 @@ hr {
 main {
     min-height: 100vh;
 }
+main .notification {
+    top: 5rem;
+    left: 65rem;
+}
 
 /* NAVIGATION BAR */
 .navbar {

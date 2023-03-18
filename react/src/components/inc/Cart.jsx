@@ -73,9 +73,9 @@ export default function Cart() {
                         <tr key={index}>
                             <td><button onClick={()=>{deleteCartItem(cartItem.id)}}><FontAwesomeIcon icon={faTrashCan} className="icon"/></button></td>
                             <td><img src={cartItem.product.image} alt={cartItem.product.title} /></td>
-                            <td className="text-capitalize">{cartItem.product.title}</td>
+                            <td className="text-capitalize"><a className="text-decoration-none" href={`/product/${cartItem.product.id}`}>{cartItem.product.title}</a></td>
                             <td>${cartItem.product.price}</td>
-                            <td><input type="number" onChange={()=>{}} value={cartItem.quantity} max={cartItem.product.stock} min={0} className="w-25 pl-1" /></td>
+                            <td>{cartItem.quantity}</td>
                             <td>$ {cartItem.quantity * cartItem.product.price}</td>
                         </tr>
                     )}
@@ -83,7 +83,7 @@ export default function Cart() {
                 </table>
             </section>
 
-            <section id="cart-bottom" className="container">
+            <section id="cart-bottom" className="container mb-5">
                 <div className="row">
                     <div className="coupon col-lg-6 col-md-6 col-12 mb-4">
                         <div>

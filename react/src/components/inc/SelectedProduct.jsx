@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import axiosClient from '../../axios-client';
+import { useStateContext } from '../../context/ContextProvider';
 import PageLoadingAnimation from './PageLoadingAnimation';
 import ProductList from './ProductList';
 import Rating from './Rating';
@@ -48,7 +49,7 @@ export default function SelectedProduct() {
     }
 
     const quantityRef = useRef();
-
+    const {setNotification} = useStateContext();
 
     const addToCart = (productID, productPrice, productStock) => {
         const cart_item = {
@@ -62,6 +63,10 @@ export default function SelectedProduct() {
         .then(({data})=>{
           localStorage.setItem("CART_TOKEN", data.cart_token);
           setCartItemsQuantity();
+          setNotification("Successfully added to cart.")
+        })
+        .catch(({response})=>{
+            setNotification(response.data.message);
         });
     }
 
